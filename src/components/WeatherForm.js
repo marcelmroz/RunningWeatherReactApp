@@ -1,25 +1,21 @@
-
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const WeatherForm = () => {
-  const [cityName, setCityName] = useState('');
+  const [cityName] = useState('');
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // API request logic here
+    // Navigate to the weather display page with the provided city name
+    history.push(`/weather/${cityName}`);
   };
 
   return (
     <div>
       <h2>Running Weather App</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter city name"
-          value={cityName}
-          onChange={(e) => setCityName(e.target.value)}
-        />
-        <button type="submit">Get Weather</button>
+        {/* ...input field and button */}
       </form>
     </div>
   );
